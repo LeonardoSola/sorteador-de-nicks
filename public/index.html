@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js" integrity="sha512-v8ng/uGxkge3d1IJuEo6dJP8JViyvms0cly9pnbfRxT6/31c3dRWxIiwGnMSWwZjHKOuY3EVmijs7k1jz/9bLA==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.slim.js" integrity="sha512-hcPg/5yQzb6Ocz2NHy+XdRfmET1kTOtZc1l6Yt2TyriHW6WpK80hoLfaKG5wI7SqLt/x6IiV9kRoInYCA/BEWw==" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Nickname Randomizer </title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <center>
+        <h1 class="titulo">Sorteador de Nickname</h1>
+        <form id="formulario">
+            <input type="text" name="nickname" id="nickname" class="input-nick" placeholder="Insira seu nickname" maxlength="10">
+            <div id="nickantigo" class="nickantigo" style="display: none;"></div>
+            <button type="submit" class="botao" id="botao"> Pronto! </button>
+            <div id="espera" class="espera" style="display: none;">Aguarde...</div>
+        </form>
+    </center>
+
+    <img src="boneco.png" alt="boneco" class="boneco">
+</body>
+<script src="/socket.io/socket.io.js"></script>
+<script>
+    let espera = document.getElementById('espera')
+    var socket = io('/');
+    function renderMessage(message) {
+        espera.innerText = `Use o nick: ${message.nickname}`
+    }
+    socket.on('receivedMessage', function(message){
+        renderMessage(message)
+    })
+    
+    $('#formulario').submit((event) => {
+        event.preventDefault();
+        
+        
+        var author = $('input[name=nickname]').val();
+        if (author.length) {
+            var nickObject = {
+                nickname: author
+            };
+            socket.emit('sendMessage', nickObject)
+        }
+        
+        let nickantigo = document.getElementById('nickantigo')
+        nickantigo.innerHTML = `<center>${author}</center>`
+        
+        $('#botao').hide()
+        $('#espera').show()
+        
+        $('#nickname').hide()
+        $('#nickantigo').show()
+    });
+</script>
+
+</html>

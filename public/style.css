@@ -1,0 +1,120 @@
+body {
+    background-image: url(espaco.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow-x: hidden;
+}
+
+.titulo {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 60pt;
+    color: #1ad2b1;
+    padding-top: 10px;
+}
+
+.input-nick {
+    color: black;
+    width: 424px;
+    height: 59px;
+    margin-top: 30px;
+    text-align: center;
+    border-radius: 10px;
+    border: 2px solid #FFFFFF;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 36px;
+    line-height: 45px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+.nickantigo{
+    background-color: white;
+    color: black;
+    width: 424px;
+    max-width: 424px;
+    height: 59px;
+    max-height: 59px;
+    margin-top: 30px;
+    border-radius: 10px;
+    border: 2px solid #FFFFFF;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 36px;
+    line-height: 45px;
+    display: flex;
+    text-align: center;
+    align-content: center;
+    align-items: center;
+}
+
+.botao {
+    color: black;
+    text-align: center;
+    width: 424px;
+    height: 59px;
+    margin-top: 100px;
+    text-align: center;
+    background-color: #38fedc;
+    border-radius: 10px;
+    border: 2px solid #FFFFFF;
+    box-sizing: border-box;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 36px;
+    line-height: 42px;
+    display: flex;
+    align-items: center;
+    padding-left: 10.5%;
+}
+.botao:hover{
+    cursor: pointer;
+}
+.espera {
+    color: black;
+    text-align: center;
+    width: 424px;
+    height: 59px;
+    margin-top: 100px;
+    text-align: center;
+    background-color: #38fedc;
+    border-radius: 10px;
+    border: 2px solid #FFFFFF;
+    box-sizing: border-box;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 36px;
+    line-height: 42px;
+    display: flex;
+    align-items: center;
+}
+.formulario {
+    display: grid;
+}
+
+.boneco {
+    position: absolute;
+    margin-top: 20px;
+    left: 10%;
+    animation: spin 4s linear infinite, indo 10s linear infinite;
+}
+
+@keyframes spin {
+    100% {
+        -webkit-transform: rotate(-360deg);
+        transform: rotate(-360deg);
+    }
+}
+
+@keyframes indo {
+    from {
+        left: -15%;
+    }
+    to {
+        left: 100%;
+    }
+}
